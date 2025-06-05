@@ -28,6 +28,7 @@
   <button onclick="addToCart(120)">加入購物車</button>
 
   <script>
+
     let storedTotal = Number(localStorage.getItem("cartTotal"));
     let totalPrice = isNaN(storedTotal) ? 0 : storedTotal;
 
@@ -49,9 +50,6 @@
       console.log("已清空購物車");
     }
 
-    window.onload = function () {
-      showTotal();
-    };
   </script>
 </body>
 </html>
