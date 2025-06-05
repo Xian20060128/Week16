@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>購物車</title>
+  <style>
+    .product-img {
+      width: 150px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="totalBtn" onclick="showTotal()">購物車總額</button>
+  <button onclick="resetCart()">清空購物車</button>
+
+  <br><br>
+
+  <img src="1.jpg" class="product-img"><br>
+  <p>$100</p>
+  <button onclick="addToCart(100)">加入購物車</button>
+
+  <br><br>
+
+  <img src="2.jpg" class="product-img"><br>
+  <p>$120</p>
+  <button onclick="addToCart(120)">加入購物車</button>
+
+  <script>
+    let storedTotal = Number(localStorage.getItem("cartTotal"));
+    let totalPrice = isNaN(storedTotal) ? 0 : storedTotal;
+
+    function addToCart(price) {
+      totalPrice += price;
+      localStorage.setItem("cartTotal", totalPrice);
+      console.log("目前總額：" + totalPrice);
+    }
+
+    function showTotal() {
+      const btn = document.getElementById("totalBtn");
+      btn.innerText = "$" + totalPrice;
+    }
+
+    function resetCart() {
+      totalPrice = 0;
+      localStorage.setItem("cartTotal", totalPrice);
+      document.getElementById("totalBtn").innerText = "購物車總額";
+      console.log("已清空購物車");
+    }
+
+    window.onload = function () {
+      showTotal();
+    };
+  </script>
+</body>
+</html>
